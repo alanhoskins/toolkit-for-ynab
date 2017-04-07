@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'ShowMultipleMonths',
+  name: 'MultiMonthBudget',
   type: 'checkbox',
   default: false,
   section: 'general',
