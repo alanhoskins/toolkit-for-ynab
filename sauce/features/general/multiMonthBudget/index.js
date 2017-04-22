@@ -9,8 +9,8 @@ export default class ShowMultipleMonths extends Feature {
   }
 
   shouldInvoke() {
-    console.log('shouldInvoke', !$('.ynabtk-navlink-multi-budget').length);
-    return !$('.ynabtk-navlink-multi-budget').length;
+    // console.log('shouldInvoke', !$('.ynabtk-navlink-multi-budget').length);
+    // return !$('.ynabtk-navlink-multi-budget').length;
   }
 
   invoke() {
@@ -18,30 +18,30 @@ export default class ShowMultipleMonths extends Feature {
   }
 
   observe(changedNodes) {
-    // console.log('changedNodes', changedNodes);
+    console.log('changedNodes', changedNodes);
     if (!this.shouldInvoke()) return;
 
-    if (changedNodes.has('layout user-logged-in')) {
-      if ($('.nav-main').length) {
-        this.invoke();
-      }
-    }
+    // if (changedNodes.has('layout user-logged-in')) {
+    //   if ($('.nav-main').length) {
+    //     this.invoke();
+    //   }
+    // }
 
-    if (
-      changedNodes.has('navlink-budget active') || changedNodes.has('navlink-accounts active') ||
-      changedNodes.has('navlink-reports active') || changedNodes.has('active navlink-reports') ||
-      changedNodes.has('nav-account-row is-selected')
-    ) {
-      $('.ynabtk-navlink-multi-budget').removeClass('active');
-      $('.ynabtk-multi-budget').remove();
+    // if (
+    //   changedNodes.has('navlink-budget active') || changedNodes.has('navlink-accounts active') ||
+    //   changedNodes.has('navlink-reports active') || changedNodes.has('active navlink-reports') ||
+    //   changedNodes.has('nav-account-row is-selected')
+    // ) {
+    //   $('.ynabtk-navlink-multi-budget').removeClass('active');
+    //   $('.ynabtk-multi-budget').remove();
 
-      // And restore the YNAB stuff we hid earlier
-      $('.budget-header, .scroll-wrap').show();
-    }
+    //   // And restore the YNAB stuff we hid earlier
+    //   $('.budget-header, .scroll-wrap').show();
+    // }
 
-    if (changedNodes.has('sidebar-contents')) {
-      this.setupMultiMonthBudgetButton();
-    }
+    // if (changedNodes.has('sidebar-contents')) {
+    //   this.setupMultiMonthBudgetButton();
+    // }
   }
 
   setupMultiMonthBudgetButton() {
@@ -55,9 +55,9 @@ export default class ShowMultipleMonths extends Feature {
       $('.navlink-budget a').click();
     }
 
-    toolkitHelper.getAllBudgetMonthsViewModel().then(budgetMonthsViewModel => {
-      this.buildMultiMonthBudgetPage($('div.scroll-wrap').closest('.ember-view'), budgetMonthsViewModel);
-    });
+    // toolkitHelper.getAllBudgetMonthsViewModel().then(budgetMonthsViewModel => {
+    //   this.buildMultiMonthBudgetPage($('div.scroll-wrap').closest('.ember-view'), budgetMonthsViewModel);
+    // });
   }
 
   buildMultiMonthBudgetPage($pane, budgetMonthsViewModel) {
